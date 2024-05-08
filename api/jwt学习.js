@@ -1,0 +1,11 @@
+/*
+*令牌组成：
+1.标头Header
+2.有效载荷Payload
+3.签名Signature
+故jwt通常显示为Header.Payload.Signature
+*
+*/
+/*
+签名的作用是验证要传的信息有没有被更改
+*/

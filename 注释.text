@@ -1,0 +1,54 @@
+一.要安装的包：
+1.express@4.17.1
+2.mysql:npm i mysql@2.18.1
+3.bcryptjs:npm i bcryptjs@2.4.3
+password = bcryptjs.hashSync(密码,随即盐的长度(10))
+对用户密码进行加密，优点:
+加密之后的密码，无法被逆向破解
+同一明文密码多次加查，得到的加密结果各不相同，保证了安全性
+4.npm i jsonwebtoken@8.5.1
+用于生成token字符串
+5.jsonwebtoken 和 express-jwt@5.3.3：用于jwt和json字符串的转换
+6.joi和express-joi：验证表单数据是否符合格式，第一个用来定义规则，第二个用来自动验证
+@hapi/joi@17.1.0
+@escook/express-joi
+Joi.string()字符串
+Joi.alphanum()值只能是字母或数字
+Joi.min(4)最小长度
+Joi.max(4)
+Joi.required()必需
+Joi.pattern(/^[\S]{6,15}$/)括号内是一个正则表达式，表示格式必须符合该正则表达式
+Joi.ref(参数)参数是一个验证规则的名字，表示这两个内容必须保持一致
+7.cors允许跨域访问cors@2.8.5
+8.body-parser解析post表单数据
+
+
+
+
+
+
+二.注意要点
+1.status=1:失败
+2.bcrypt.compareSync(输入的密码,数据库中的密码):结果为true表示密码一致
+3.在生成 Token 宁符串的时候，一定要别除 密码 和 头像 的值——用es6新语法
+即：
+const user={...results[0],password:'',user_pic:''}
+4.token字符串前要加'Bearer '字符串，空格不能丢
+5.修改密码步骤：判断新、旧密码密码格式————判断相应用户是否存在，在数据库里查找————判断旧密码是否正确————更新新密码（要先对密码进行加密）
+6.login:登录
+register:注册
+7.在res.cc()中，如果成功请输入参数0
+
+
+
+
+三.当前的问题
+1.joi.pattern()方法好像用不了
+2.验证字符串的代码好像没问题，但是验证的功能并没有实现
+
+
+四.
+1.格式规定
+id：3-8位数字
+un：4-8位数字和字母组合
+pwd：4-8位数字和字母组合
